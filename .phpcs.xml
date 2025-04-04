@@ -1,0 +1,46 @@
+<?xml version="1.0"?>
+<ruleset name="FirstAndThird" namespace="FirstAndThird\CS\Standard">
+
+  <description>A custom coding standard for First+Third</description>
+
+  <!-- What to scan -->
+  <file>./wp-content/themes</file>
+  <exclude-pattern>./wp-content/themes/twentytwentyone/</exclude-pattern>
+  <exclude-pattern>./wp-content/themes/twentytwentytwo/</exclude-pattern>
+  <exclude-pattern>./wp-content/themes/twentytwentythree/</exclude-pattern>
+
+  <!-- How to scan -->
+  <arg value="sp"/>
+  <arg name="colors"/>
+  <arg name="basepath" value="."/>
+  <arg name="parallel" value="8"/>
+  <arg name="extensions" value="php"/>
+
+  <!-- Rules: VIP Coding Standards -->
+  <rule ref="WordPress-VIP-Go">
+    <exclude name="Generic.Arrays.DisallowShortArraySyntax" />
+    <exclude name="Generic.WhiteSpace.DisallowSpaceIndent" />
+    <exclude name="Generic.WhiteSpace.ScopeIndent" />
+    <exclude name="PEAR" />
+    <exclude name="WordPress.PHP.DisallowShortTernary" />
+    <exclude name="WordPress.WhiteSpace.PrecisionAlignment" />
+  </rule>
+
+  <!-- Rules: F+T Coding Standards -->
+  <rule ref="Generic.Formatting.MultipleStatementAlignment"/>
+  <rule ref="Generic.WhiteSpace.DisallowTabIndent"/>
+  <rule ref="PEAR.WhiteSpace.ScopeIndent">
+      <properties>
+          <property name="indent" value="2"/>
+          <property name="exact" value="false"/>
+      </properties>
+  </rule>
+  <rule ref="PEAR.Functions.FunctionCallSignature">
+      <properties>
+          <property name="indent" value="2"/>
+          <property name="allowMultipleArguments" value="true" />
+          <property name="exact" value="false"/>
+      </properties>
+  </rule>
+  <rule ref="PEAR.Formatting.MultiLineAssignment" />
+</ruleset>
