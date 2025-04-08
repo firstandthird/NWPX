@@ -1,0 +1,28 @@
+name: Deploy to a WP Engine Staging environment
+on:
+  push:
+    branches:
+      - staging
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Use Node.js
+        uses: actions/setup-node@v1
+        with:
+          node-version: 22.x
+      - name: npm install
+        run: |
+          npm install
+      - name: build
+        run: |
+          npm run build
+      - name: GitHub Action Deploy to WP Engine
+        uses: wpengine/github-action-wpe-site-deploy@v3
+        with:
+          SRC_PATH: 'wp-content/'
+          REMOTE_PATH: 'wp-content/'
+          WPE_SSHG_KEY_PRIVATE: ${{ secrets.WPE_SSHG_KEY_PRIVATE }}
+          WPE_ENV: nwpxstg
+          FLAGS: -azvr --inplace --delete --exclude=.*
