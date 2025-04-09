@@ -22,7 +22,6 @@ $slides = get_field('slides'); // Repeater field
 <section id="<?php echo $anchor; ?>" class="<?php echo esc_attr($class_name); ?> w-full">
     <div class="relative flex flex-col items-center justify-center">
         <?php if (!empty($slides)) : ?>
-          <?php var_dump($slides); ?>
             <div class="carousel w-full">
                 <?php foreach ($slides as $slide) :
                     $image = $slide['image'];
@@ -34,19 +33,6 @@ $slides = get_field('slides'); // Repeater field
                     $carousel_short_title = $slide['carousel_short_title'];
                 ?>
                     <div class="carousel-item flex flex-col items-center justify-center w-full">
-                        <?php if (!empty($video)) : ?>
-                            <video class="w-full h-auto" autoplay muted loop playsinline poster="<?php echo esc_url($image); ?>">
-                                <source src="<?php echo esc_url($video); ?>" type="video/mp4">
-                            </video>
-                        <?php elseif (!empty($image)) : ?>
-                            <picture>
-                                <?php if (!empty($mobile_image)) : ?>
-                                    <source srcset="<?php echo esc_url($mobile_image); ?>" media="(max-width: 768px)">
-                                <?php endif; ?>
-                                <img src="<?php echo esc_url($image); ?>" alt="<?php echo esc_attr($title); ?>" class="w-full h-auto" fetchpriority="high">
-                            </picture>
-                        <?php endif; ?>
-
                         <div class="content-container text-center px-4 py-8">
                             <?php if (!empty($carousel_short_title)) : ?>
                                 <p class="text-sm font-medium text-gray-500"><?php echo esc_html($carousel_short_title); ?></p>
