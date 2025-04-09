@@ -1,7 +1,7 @@
 <?php
 /**
  * Plugin Name: ACF Bridge for F+T Theme
- * Description: Registers v6 blocks in F+T Client theme.
+ * Description: Registers v6 blocks in M2 Ingredients theme.
  * Version: 1.1.0
  * Author: First+Third
  * Author URI: https://firstandthird.com
@@ -12,9 +12,9 @@
 namespace FirstAndThird\FT_Blocks;
 
 class FT_Blocks_Manager {
-  static $theme_path = '';
+  static $theme_path     = '';
   static $theme_category = 'custom-blocks';
-  static $theme_name = 'Custom Blocks';
+  static $theme_name     = 'Custom Blocks';
 
   static function init() {
     self::$theme_path = get_stylesheet_directory();

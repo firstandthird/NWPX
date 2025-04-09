@@ -24,7 +24,7 @@ function bodhi_svgs_upload_mimes( $mimes = array() ) {
     $allowed_roles_array = (array) $bodhi_svgs_options['restrict'];
     
     // Get the current user and their roles
-    $user = wp_get_current_user();
+    $user               = wp_get_current_user();
     $current_user_roles = (array) $user->roles;
 
     // For multisite, add network admin to allowed roles
@@ -39,7 +39,7 @@ function bodhi_svgs_upload_mimes( $mimes = array() ) {
     }
 
     // Allow SVG file upload
-    $mimes['svg'] = 'image/svg+xml';
+    $mimes['svg']  = 'image/svg+xml';
     $mimes['svgz'] = 'image/svg+xml';
 
     return $mimes;
@@ -53,9 +53,9 @@ function bodhi_svgs_upload_check( $checked, $file, $filename, $mimes ) {
 
     if ( ! $checked['type'] ) {
 
-        $check_filetype = wp_check_filetype( $filename, $mimes );
-        $ext = $check_filetype['ext'];
-        $type = $check_filetype['type'];
+        $check_filetype  = wp_check_filetype( $filename, $mimes );
+        $ext             = $check_filetype['ext'];
+        $type            = $check_filetype['type'];
         $proper_filename = $filename;
 
         // Check if the file is an SVG or SVGZ

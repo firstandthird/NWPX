@@ -125,7 +125,7 @@ class InstalledVersions
     public static function satisfies(VersionParser $parser, $packageName, $constraint)
     {
         $constraint = $parser->parseConstraints((string) $constraint);
-        $provided = $parser->parseConstraints(self::getVersionRanges($packageName));
+        $provided   = $parser->parseConstraints(self::getVersionRanges($packageName));
 
         return $provided->matches($constraint);
     }
@@ -312,7 +312,7 @@ class InstalledVersions
      */
     public static function reload($data)
     {
-        self::$installed = $data;
+        self::$installed         = $data;
         self::$installedByVendor = array();
 
         // when using reload, we disable the duplicate protection to ensure that self::$installed data is
@@ -332,7 +332,7 @@ class InstalledVersions
             self::$canGetVendors = method_exists('Composer\Autoload\ClassLoader', 'getRegisteredLoaders');
         }
 
-        $installed = array();
+        $installed      = array();
         $copiedLocalDir = false;
 
         if (self::$canGetVendors) {
@@ -343,11 +343,11 @@ class InstalledVersions
                     $installed[] = self::$installedByVendor[$vendorDir];
                 } elseif (is_file($vendorDir.'/composer/installed.php')) {
                     /** @var array{root: array{name: string, pretty_version: string, version: string, reference: string|null, type: string, install_path: string, aliases: string[], dev: bool}, versions: array<string, array{pretty_version?: string, version?: string, reference?: string|null, type?: string, install_path?: string, aliases?: string[], dev_requirement: bool, replaced?: string[], provided?: string[]}>} $required */
-                    $required = require $vendorDir.'/composer/installed.php';
+                    $required                            = require $vendorDir.'/composer/installed.php';
                     self::$installedByVendor[$vendorDir] = $required;
-                    $installed[] = $required;
+                    $installed[]                         = $required;
                     if (self::$installed === null && $vendorDir.'/composer' === $selfDir) {
-                        self::$installed = $required;
+                        self::$installed           = $required;
                         self::$installedIsLocalDir = true;
                     }
                 }
@@ -362,7 +362,7 @@ class InstalledVersions
             // and not from its source location in the composer/composer package, see https://github.com/composer/composer/issues/9937
             if (substr(__DIR__, -8, 1) !== 'C') {
                 /** @var array{root: array{name: string, pretty_version: string, version: string, reference: string|null, type: string, install_path: string, aliases: string[], dev: bool}, versions: array<string, array{pretty_version?: string, version?: string, reference?: string|null, type?: string, install_path?: string, aliases?: string[], dev_requirement: bool, replaced?: string[], provided?: string[]}>} $required */
-                $required = require __DIR__ . '/installed.php';
+                $required        = require __DIR__ . '/installed.php';
                 self::$installed = $required;
             } else {
                 self::$installed = array();

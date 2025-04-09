@@ -99,7 +99,7 @@
 													foreach ($all_roles as $role => $details) {
 														$user_role_slug = esc_attr($role);
 														$user_role_name = translate_user_role($details['name']);
-														$role_selected = in_array($user_role_slug, $allowed_roles_array) ? 'selected' : '';
+														$role_selected  = in_array($user_role_slug, $allowed_roles_array) ? 'selected' : '';
 													?>
 													<option value="<?php echo esc_attr($user_role_slug); ?>" <?php echo esc_attr($role_selected); ?>><?php echo esc_html($user_role_name); ?></option>
 												<?php } ?>
@@ -117,7 +117,7 @@
 											<div class="sanitize_on_upload_roles">
 												<?php
 													global $wp_roles;
-													$all_roles = $wp_roles->roles;  // Fetch all available roles
+													$all_roles            = $wp_roles->roles;  // Fetch all available roles
 													$sanitize_roles_array = $bodhi_svgs_options['sanitize_on_upload_roles'];
 												?>
 												<select name="bodhi_svgs_settings[sanitize_on_upload_roles][]" multiple>
@@ -125,7 +125,7 @@
 													foreach ($all_roles as $role => $details) {
 														$user_role_slug = esc_attr($role);
 														$user_role_name = translate_user_role($details['name']);
-														$role_selected = in_array($user_role_slug, $sanitize_roles_array) ? 'selected' : '';
+														$role_selected  = in_array($user_role_slug, $sanitize_roles_array) ? 'selected' : '';
 												?>
 													<option value="<?php echo esc_attr($user_role_slug); ?>" <?php echo esc_attr($role_selected); ?>><?php echo esc_html($user_role_name); ?></option>
 												<?php } ?>

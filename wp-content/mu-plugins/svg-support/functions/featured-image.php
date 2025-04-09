@@ -21,10 +21,10 @@ function bodhi_svgs_featured_image_meta( $content ) {
 	if ( $thumbnail && strpos( $thumbnail, '.svg' ) !== false ) {
 
 		$text 	= __( 'Render this SVG inline (advanced)', 'svg-support' );
-		$id 	= 'inline_featured_image';
-		$value 	= esc_attr( get_post_meta( $post->ID, $id, true ) );
-		$label 	= '<label for="' . $id . '" class="selectit"><input name="' . $id . '" type="checkbox" id="' . $id . '" value="1" '. checked( $value, 1, false ) .'> ' . $text .'</label>';
-		$nonce  = wp_nonce_field( 'bodhi_svgs_save_featured_image_meta', 'bodhi_svgs_featured_image_nonce', true, false );
+		$id    = 'inline_featured_image';
+		$value = esc_attr( get_post_meta( $post->ID, $id, true ) );
+		$label = '<label for="' . $id . '" class="selectit"><input name="' . $id . '" type="checkbox" id="' . $id . '" value="1" '. checked( $value, 1, false ) .'> ' . $text .'</label>';
+		$nonce = wp_nonce_field( 'bodhi_svgs_save_featured_image_meta', 'bodhi_svgs_featured_image_nonce', true, false );
 
 		return $content .= $label . $nonce;
 

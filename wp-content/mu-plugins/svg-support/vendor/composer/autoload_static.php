@@ -39,8 +39,8 @@ class ComposerStaticInit1154382d6cf53296b4cc0a1243973e35
     {
         return \Closure::bind(function () use ($loader) {
             $loader->prefixLengthsPsr4 = ComposerStaticInit1154382d6cf53296b4cc0a1243973e35::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInit1154382d6cf53296b4cc0a1243973e35::$prefixDirsPsr4;
-            $loader->classMap = ComposerStaticInit1154382d6cf53296b4cc0a1243973e35::$classMap;
+            $loader->prefixDirsPsr4    = ComposerStaticInit1154382d6cf53296b4cc0a1243973e35::$prefixDirsPsr4;
+            $loader->classMap          = ComposerStaticInit1154382d6cf53296b4cc0a1243973e35::$classMap;
 
         }, null, ClassLoader::class);
     }

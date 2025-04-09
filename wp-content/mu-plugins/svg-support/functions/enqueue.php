@@ -110,13 +110,13 @@ function bodhi_svgs_inline() {
 
 		if ( ! empty( $bodhi_svgs_options['use_expanded_js'] ) ) {
 			$bodhi_svgs_js_folder = '';
-			$bodhi_svgs_js_file = '';
+			$bodhi_svgs_js_file   = '';
 		} else {
 			$bodhi_svgs_js_folder = 'min/';
-			$bodhi_svgs_js_file = '-min';
+			$bodhi_svgs_js_file   = '-min';
 		}
 
-		$bodhi_svgs_js_footer = ! empty( $bodhi_svgs_options['js_foot_choice'] );
+		$bodhi_svgs_js_footer  = ! empty( $bodhi_svgs_options['js_foot_choice'] );
 		$bodhi_svgs_js_vanilla = ! empty( $bodhi_svgs_options['use_vanilla_js'] ) ? '-vanilla' : '';
 
 		$bodhi_svgs_js_path = 'js/' . $bodhi_svgs_js_folder . 'svgs-inline' . $bodhi_svgs_js_vanilla . $bodhi_svgs_js_file . '.js';
