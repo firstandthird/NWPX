@@ -204,10 +204,10 @@ function bodhi_svgs_admin_footer_text( $default ) {
 
 	if ( bodhi_svgs_specific_pages_settings() || bodhi_svgs_specific_pages_media_library() ) {
 
-		$strong_open = '<strong>';
+		$strong_open  = '<strong>';
 		$strong_close = '</strong>';
-		$link_open = '<a href="https://wordpress.org/support/view/plugin-reviews/svg-support?filter=5#postform" target="_blank" class="svgs-rating-link">';
-		$link_close = '</a>';
+		$link_open    = '<a href="https://wordpress.org/support/view/plugin-reviews/svg-support?filter=5#postform" target="_blank" class="svgs-rating-link">';
+		$link_close   = '</a>';
 
 		// translators: %1$s: Opening strong tag, %2$s: Closing strong tag, %3$s: Opening anchor tag for rating link, %4$s: Closing anchor tag
 		$text = esc_html__( 'If you like %1$sSVG Support%2$s please leave a %3$s★★★★★%4$s rating. A huge thanks in advance!', 'svg-support' );

@@ -12,18 +12,16 @@ class Search_Console_Parameters extends Parameters {
 	/**
 	 * The search dimensions to query.
 	 *
-	 * @var string[]
+	 * @var string[] $dimensions
 	 */
 	private $dimensions;
 
 	/**
-	 * Sets the dimension parameter.
+	 * The constructor.
 	 *
-	 * @param array<string> $dimensions The dimensions.
-	 *
-	 * @return void
+	 * @param string[] $dimensions The search dimensions to query.
 	 */
-	public function set_dimensions( array $dimensions ): void {
+	public function __construct( array $dimensions ) {
 		$this->dimensions = $dimensions;
 	}
 

@@ -5,7 +5,7 @@ License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl.html
 Tags: SEO, XML sitemap, Content analysis, Readability, Schema
 Tested up to: 6.7
-Stable tag: 24.8.1
+Stable tag: 24.5
 Requires PHP: 7.2.5
 
 Improve your WordPress SEO: Write better content and have a fully optimized WordPress site using the Yoast SEO plugin.
@@ -274,50 +274,37 @@ Your question has most likely been answered on our help center: [yoast.com/help/
 
 == Changelog ==
 
-= 24.9 =
+= 24.5 =
 
-Release date: 2025-04-15
+Release date: 2025-02-18
 
-#### Enhancements
-
-* Changes the applicability criteria of readability assessments so that they are shown even if there is little or no text.
-* Improves the recognition of transition words for Farsi.
-* Introduces more robust HTML processing and highlighting for the _consecutive sentences_ assessment.
-
-#### Bugfixes
-
-* Fixes a bug where long sentences would be incorrectly highlighted in _sentence length_ assessment in the default editor when they were part of a block that contained non-breaking spaces or closing tags (`>`).
-* Fixes a bug where the advanced replacement variables would not be visible when editing social previews in Elementor.
-* Fixes a bug where the content image would not show on social previews when editing it in Elementor.
-* Fixes a bug where Yoast modals would not be visible when using Astra plugins.
-
-#### Other
-
-* Adds a space before the closing slash in self-closing HTML tags to comply with recommended coding standards. Props to [laxman1192](https://github.com/laxman1192).
-* Updates the Google AI bot name in the _crawl optimization_ settings from _Google Bard_ to _Google Gemini_.
-
-= 24.8.1 =
-
-Release date: 2025-04-02
-
-#### Bugfixes
-
-* Fixes a potential fatal error on the dashboard page.
-
-= 24.8 =
-
-Release date: 2025-04-01
-
-Yoast SEO 24.8 brings more enhancements and bugfixes. [Find more information about our software releases and updates here](https://yoa.st/releases).
+Yoast SEO 24.5 brings more enhancements and bugfixes. [Find more information about our software releases and updates here](https://yoa.st/releases).
 
 #### Enhancements
 
-* Adds _pregnant women_ to the potentially non-inclusive phrases targeted by the inclusive language analysis.
-* Improves the inclusive language analysis feedback for the potentially non-inclusive word _exotic_, and prevents the feedback from appearing when _exotic_ is followed by words common in scientific contexts.
+* Issues a warning message when the image automatically selected for a post social preview is in the unsupported AVIF format.
+
+#### Bugfixes
+
+* Fixes a bug where the canonical presenter would throw a deprecation notice when the environments run PHP >= 8.1. Props to [aanduque](https://github.com/aanduque).
 
 #### Other
 
-* Removes the Yoast AI Optimize modals from the Yoast admin pages.
+* Simplifies calculating the `date` replacement variable before displaying it in the frontend. Props to [apermo](https://github.com/apermo).
+* Updates the Yoast WooCommerce SEO integration cards with the latest Woo logo.
+
+= 24.4 =
+
+Release date: 2025-02-04
+
+Yoast SEO 24.4 brings more enhancements and bugfixes. [Find more information about our software releases and updates here](https://yoa.st/releases).
+
+#### Bugfixes
+
+* Fixes a bug where editing a link in the block editor would have unexpected consequences when using undo.
+* Fixes a bug where the `article:modified_time` meta tag would show an earlier time than the `article:published_time` meta tag for scheduled posts.
+* Fixes a bug where the Schema type of the product would not be locked when Yoast WooCommerce SEO is enabled.
+* Fixes a bug where using hyphens at the start or end of a sentence would cripple the content analysis when editing a post.
 
 = Earlier versions =
 For the changelog of earlier versions, please refer to [the changelog on yoast.com](https://yoa.st/yoast-seo-changelog).

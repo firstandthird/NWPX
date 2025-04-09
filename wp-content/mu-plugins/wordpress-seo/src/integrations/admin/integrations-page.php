@@ -11,7 +11,6 @@ use WPSEO_Admin_Asset_Manager;
 use Yoast\WP\SEO\Conditionals\Admin_Conditional;
 use Yoast\WP\SEO\Conditionals\Jetpack_Conditional;
 use Yoast\WP\SEO\Conditionals\Third_Party\Elementor_Activated_Conditional;
-use Yoast\WP\SEO\Dashboard\Infrastructure\Endpoints\Site_Kit_Consent_Management_Endpoint;
 use Yoast\WP\SEO\Dashboard\Infrastructure\Integrations\Site_Kit;
 use Yoast\WP\SEO\Helpers\Options_Helper;
 use Yoast\WP\SEO\Helpers\Woocommerce_Helper;
@@ -65,13 +64,6 @@ class Integrations_Page implements Integration_Interface {
 	private $site_kit_integration_data;
 
 	/**
-	 * The site kit consent management endpoint.
-	 *
-	 * @var Site_Kit_Consent_Management_Endpoint
-	 */
-	private $site_kit_consent_management_endpoint;
-
-	/**
 	 * {@inheritDoc}
 	 */
 	public static function get_conditionals() {
@@ -81,15 +73,12 @@ class Integrations_Page implements Integration_Interface {
 	/**
 	 * Workouts_Integration constructor.
 	 *
-	 * @param WPSEO_Admin_Asset_Manager            $admin_asset_manager                  The admin asset manager.
-	 * @param Options_Helper                       $options_helper                       The options helper.
-	 * @param Woocommerce_Helper                   $woocommerce_helper                   The WooCommerce helper.
-	 * @param Elementor_Activated_Conditional      $elementor_conditional                The elementor conditional.
-	 * @param Jetpack_Conditional                  $jetpack_conditional                  The Jetpack conditional.
-	 * @param Site_Kit                             $site_kit_integration_data            The site kit integration
-	 *                                                                                   configuration data.
-	 * @param Site_Kit_Consent_Management_Endpoint $site_kit_consent_management_endpoint The site kit consent
-	 *                                                                                   management endpoint.
+	 * @param WPSEO_Admin_Asset_Manager       $admin_asset_manager       The admin asset manager.
+	 * @param Options_Helper                  $options_helper            The options helper.
+	 * @param Woocommerce_Helper              $woocommerce_helper        The WooCommerce helper.
+	 * @param Elementor_Activated_Conditional $elementor_conditional     The elementor conditional.
+	 * @param Jetpack_Conditional             $jetpack_conditional       The Jetpack conditional.
+	 * @param Site_Kit                        $site_kit_integration_data The site kit integration configuration data.
 	 */
 	public function __construct(
 		WPSEO_Admin_Asset_Manager $admin_asset_manager,
@@ -97,16 +86,14 @@ class Integrations_Page implements Integration_Interface {
 		Woocommerce_Helper $woocommerce_helper,
 		Elementor_Activated_Conditional $elementor_conditional,
 		Jetpack_Conditional $jetpack_conditional,
-		Site_Kit $site_kit_integration_data,
-		Site_Kit_Consent_Management_Endpoint $site_kit_consent_management_endpoint
+		Site_Kit $site_kit_integration_data
 	) {
-		$this->admin_asset_manager                  = $admin_asset_manager;
-		$this->options_helper                       = $options_helper;
-		$this->woocommerce_helper                   = $woocommerce_helper;
-		$this->elementor_conditional                = $elementor_conditional;
-		$this->jetpack_conditional                  = $jetpack_conditional;
-		$this->site_kit_integration_data            = $site_kit_integration_data;
-		$this->site_kit_consent_management_endpoint = $site_kit_consent_management_endpoint;
+		$this->admin_asset_manager       = $admin_asset_manager;
+		$this->options_helper            = $options_helper;
+		$this->woocommerce_helper        = $woocommerce_helper;
+		$this->elementor_conditional     = $elementor_conditional;
+		$this->jetpack_conditional       = $jetpack_conditional;
+		$this->site_kit_integration_data = $site_kit_integration_data;
 	}
 
 	/**
@@ -233,7 +220,6 @@ class Integrations_Page implements Integration_Interface {
 				'is_multisite'                       => \is_multisite(),
 				'plugin_url'                         => \plugins_url( '', \WPSEO_FILE ),
 				'site_kit_configuration'             => $this->site_kit_integration_data->to_array(),
-				'site_kit_consent_management_url'    => $this->site_kit_consent_management_endpoint->get_url(),
 			]
 		);
 	}

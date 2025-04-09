@@ -49,7 +49,7 @@ function bodhi_svgs_sanitize_svg_on_import( $file_path ) {
 		if ( bodhi_svgs_sanitize( $file_path ) ) {
 			// Recalculate dimensions and regenerate metadata.
 			$dimensions = bodhi_svgs_get_dimensions( $file_path );
-			$metadata = array(
+			$metadata   = array(
 				'width'  => intval( $dimensions->width ),
 				'height' => intval( $dimensions->height ),
 				'file'   => basename( $file_path ),

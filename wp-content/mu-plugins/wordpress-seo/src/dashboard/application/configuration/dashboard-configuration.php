@@ -6,7 +6,6 @@ namespace Yoast\WP\SEO\Dashboard\Application\Configuration;
 
 use Yoast\WP\SEO\Dashboard\Application\Content_Types\Content_Types_Repository;
 use Yoast\WP\SEO\Dashboard\Application\Endpoints\Endpoints_Repository;
-use Yoast\WP\SEO\Dashboard\Infrastructure\Integrations\Site_Kit;
 use Yoast\WP\SEO\Dashboard\Infrastructure\Nonces\Nonce_Repository;
 use Yoast\WP\SEO\Editors\Application\Analysis_Features\Enabled_Analysis_Features_Repository;
 use Yoast\WP\SEO\Editors\Framework\Keyphrase_Analysis;
@@ -22,21 +21,21 @@ class Dashboard_Configuration {
 	/**
 	 * The content types repository.
 	 *
-	 * @var Content_Types_Repository
+	 * @var Content_Types_Repository $content_types_repository
 	 */
 	private $content_types_repository;
 
 	/**
 	 * The indexable helper.
 	 *
-	 * @var Indexable_Helper
+	 * @var Indexable_Helper $indexable_helper
 	 */
 	private $indexable_helper;
 
 	/**
 	 * The user helper.
 	 *
-	 * @var User_Helper
+	 * @var User_Helper $user_helper
 	 */
 	private $user_helper;
 
@@ -62,24 +61,16 @@ class Dashboard_Configuration {
 	private $nonce_repository;
 
 	/**
-	 * The Site Kit integration data.
-	 *
-	 * @var Site_Kit
-	 */
-	private $site_kit_integration_data;
-
-	/**
 	 * The constructor.
 	 *
 	 * @param Content_Types_Repository             $content_types_repository             The content types repository.
 	 * @param Indexable_Helper                     $indexable_helper                     The indexable helper
 	 *                                                                                   repository.
 	 * @param User_Helper                          $user_helper                          The user helper.
-	 * @param Enabled_Analysis_Features_Repository $enabled_analysis_features_repository The analysis feature.
-	 *                                                                                        repository.
+	 * @param Enabled_Analysis_Features_Repository $enabled_analysis_features_repository The analysis feature
+	 *                                                                                   repository.
 	 * @param Endpoints_Repository                 $endpoints_repository                 The endpoints repository.
 	 * @param Nonce_Repository                     $nonce_repository                     The nonce repository.
-	 * @param Site_Kit                             $site_kit_integration_data            The Site Kit integration data.
 	 */
 	public function __construct(
 		Content_Types_Repository $content_types_repository,
@@ -87,8 +78,7 @@ class Dashboard_Configuration {
 		User_Helper $user_helper,
 		Enabled_Analysis_Features_Repository $enabled_analysis_features_repository,
 		Endpoints_Repository $endpoints_repository,
-		Nonce_Repository $nonce_repository,
-		Site_Kit $site_kit_integration_data
+		Nonce_Repository $nonce_repository
 	) {
 		$this->content_types_repository             = $content_types_repository;
 		$this->indexable_helper                     = $indexable_helper;
@@ -96,13 +86,12 @@ class Dashboard_Configuration {
 		$this->enabled_analysis_features_repository = $enabled_analysis_features_repository;
 		$this->endpoints_repository                 = $endpoints_repository;
 		$this->nonce_repository                     = $nonce_repository;
-		$this->site_kit_integration_data            = $site_kit_integration_data;
 	}
 
 	/**
 	 * Returns a configuration
 	 *
-	 * @return array<string, array<string>>
+	 * @return array<string,array<string>>
 	 */
 	public function get_configuration(): array {
 		return [
@@ -117,7 +106,6 @@ class Dashboard_Configuration {
 			)->to_array(),
 			'endpoints'               => $this->endpoints_repository->get_all_endpoints()->to_array(),
 			'nonce'                   => $this->nonce_repository->get_rest_nonce(),
-			'siteKitConfiguration'    => $this->site_kit_integration_data->to_array(),
 		];
 	}
 }

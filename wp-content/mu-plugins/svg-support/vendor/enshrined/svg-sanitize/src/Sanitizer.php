@@ -93,7 +93,7 @@ class Sanitizer
     {
         // Load default tags/attributes
         $this->allowedAttrs = array_map('strtolower', AllowedAttributes::getAttributes());
-        $this->allowedTags = array_map('strtolower', AllowedTags::getTags());
+        $this->allowedTags  = array_map('strtolower', AllowedTags::getTags());
     }
 
     /**
@@ -101,10 +101,10 @@ class Sanitizer
      */
     protected function resetInternal()
     {
-        $this->xmlDocument = new \DOMDocument();
-        $this->xmlDocument->preserveWhiteSpace = false;
+        $this->xmlDocument                      = new \DOMDocument();
+        $this->xmlDocument->preserveWhiteSpace  = false;
         $this->xmlDocument->strictErrorChecking = false;
-        $this->xmlDocument->formatOutput = !$this->minifyXML;
+        $this->xmlDocument->formatOutput        = !$this->minifyXML;
     }
 
     /**
@@ -241,7 +241,7 @@ class Sanitizer
         }
 
         // Pre-process all identified elements
-        $xPath = new XPath($this->xmlDocument);
+        $xPath                          = new XPath($this->xmlDocument);
         $this->elementReferenceResolver = new Resolver($xPath, $this->useNestingLimit);
         $this->elementReferenceResolver->collect();
         $elementsToRemove = $this->elementReferenceResolver->getElementsToRemove();

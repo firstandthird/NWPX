@@ -140,7 +140,6 @@ class WPSEO_Option_Wpseo extends WPSEO_Option {
 		'new_taxonomies'                               => [],
 		'show_new_content_type_notification'           => false,
 		'site_kit_configuration_permanently_dismissed' => false,
-		'site_kit_connected'                           => false,
 	];
 
 	/**
@@ -510,7 +509,6 @@ class WPSEO_Option_Wpseo extends WPSEO_Option {
 				 *  'should_redirect_after_install_free'
 				 *  'show_new_content_type_notification'
 				 *  'site_kit_configuration_permanently_dismissed',
-				 * 'site_kit_connected',
 				 *  and most of the feature variables.
 				 */
 				default:

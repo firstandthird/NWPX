@@ -88,12 +88,12 @@ function bodhi_svgs_get_dimensions( $svg ) {
 	$svg = simplexml_load_string( $svg_content );
 
 	if ( $svg === FALSE ) {
-		$width = '0';
+		$width  = '0';
 		$height = '0';
 	} else {
 		$attributes = $svg->attributes();
-		$width = (string) $attributes->width;
-		$height = (string) $attributes->height;
+		$width      = (string) $attributes->width;
+		$height     = (string) $attributes->height;
 	}
 
 	return (object) array( 'width' => $width, 'height' => $height );
@@ -117,11 +117,11 @@ function bodhi_svgs_generate_svg_attachment_metadata( $metadata, $attachment_id 
 
 	if ( $mime == 'image/svg+xml' ) {
 
-		$svg_path = get_attached_file( $attachment_id );
+		$svg_path   = get_attached_file( $attachment_id );
 		$upload_dir = wp_upload_dir();
 		// Get the path relative to /uploads/
 		$relative_path = $svg_path ? str_replace($upload_dir['basedir'], '', $svg_path) : '';
-		$filename = basename( $svg_path );
+		$filename      = basename( $svg_path );
 
 		$dimensions = bodhi_svgs_get_dimensions( $svg_path );
 
@@ -132,7 +132,7 @@ function bodhi_svgs_generate_svg_attachment_metadata( $metadata, $attachment_id 
 		);
 
 		$height = intval($dimensions->height);
-		$width = intval($dimensions->width);
+		$width  = intval($dimensions->width);
 
 		// Generate sizes array for future implementations, if needed
 		$sizes = array();
@@ -149,14 +149,14 @@ function bodhi_svgs_generate_svg_attachment_metadata( $metadata, $attachment_id 
 				}
 
 				if ( $width > $height ) {
-					$ratio = round($width / $height, 2);
+					$ratio      = round($width / $height, 2);
 					$new_height = round($width_current_size / $ratio);
 				} else {
-					$ratio = round($height / $width, 2);
+					$ratio      = round($height / $width, 2);
 					$new_height = round($width_current_size * $ratio);
 				}
 
-				$sizes[$s]['width'] = $width_current_size;
+				$sizes[$s]['width']  = $width_current_size;
 				$sizes[$s]['height'] = $new_height;
 
 				$sizes[$s]['crop'] = false;
@@ -183,7 +183,7 @@ function bodhi_svgs_generate_svg_attachment_metadata( $metadata, $attachment_id 
 
 			}
 
-			$sizes[$s]['file'] = $filename;
+			$sizes[$s]['file']      = $filename;
 			$sizes[$s]['mime-type'] = 'image/svg+xml';
 
 		}
@@ -320,7 +320,7 @@ function bodhi_svgs_sanitize_svg($file) {
 	// Multiple validation checks for SVG
 	if ( $file_path && file_exists( $file_path ) ) {
 		// 1. Check MIME type using fileinfo
-		$finfo = finfo_open( FILEINFO_MIME_TYPE );
+		$finfo     = finfo_open( FILEINFO_MIME_TYPE );
 		$real_mime = finfo_file( $finfo, $file_path );
 		finfo_close( $finfo );
 
@@ -331,8 +331,8 @@ function bodhi_svgs_sanitize_svg($file) {
 		$pattern1 = '/^[\s\n]*(?:<\?xml[^>]*>[\s\n]*)?(?:<!--.*?-->[\s\n]*)*(?:<!DOCTYPE[^>]*>[\s\n]*)?(?:<!--.*?-->[\s\n]*)*<svg[^>]*>/is';
 		$pattern2 = '/^[\s\n]*(?:<!--.*?-->[\s\n]*)*<svg[^>]*>/is';
 
-		$match1 = preg_match( $pattern1, $file_content );
-		$match2 = preg_match( $pattern2, $file_content );
+		$match1      = preg_match( $pattern1, $file_content );
+		$match2      = preg_match( $pattern2, $file_content );
 		$has_closing = strpos( $file_content, '</svg>' ) !== false;
 
 		$is_svg_content = ( $match1 || $match2 ) && $has_closing;
@@ -358,8 +358,8 @@ function bodhi_svgs_sanitize_svg($file) {
 
 	// Get the roles that do not require SVG sanitization
 	$sanitize_on_upload_roles_array = (array) $bodhi_svgs_options['sanitize_on_upload_roles'];
-	$user = wp_get_current_user();
-	$current_user_roles = (array) $user->roles;
+	$user                           = wp_get_current_user();
+	$current_user_roles             = (array) $user->roles;
 
 	// Check if the current user's roles intersect with the roles that do not need sanitization
 	$no_sanitize_needed = array_intersect($sanitize_on_upload_roles_array, $current_user_roles);
@@ -498,8 +498,8 @@ add_filter( 'wp_get_attachment_image_src', 'bodhi_svgs_dimension_fallback', 10, 
 function bodhi_svgs_rest_pre_upload($file, $request) {
     if ($file['type'] === 'image/svg+xml') {
         // Randomize filename for REST API uploads
-        $ext = pathinfo($file['name'], PATHINFO_EXTENSION);
-        $random_name = wp_generate_password(12, false) . '.' . $ext;
+        $ext          = pathinfo($file['name'], PATHINFO_EXTENSION);
+        $random_name  = wp_generate_password(12, false) . '.' . $ext;
         $file['name'] = sanitize_file_name($random_name);
 
         // Force sanitization
@@ -530,8 +530,8 @@ function bodhi_svgs_rest_insert_attachment($prepared_attachment, $request) {
     }
     
     global $bodhi_svgs_options;
-    $user = wp_get_current_user();
-    $current_user_roles = (array) $user->roles;
+    $user                           = wp_get_current_user();
+    $current_user_roles             = (array) $user->roles;
     $sanitize_on_upload_roles_array = (array) $bodhi_svgs_options['sanitize_on_upload_roles'];
     
     $should_sanitize = empty(array_intersect($sanitize_on_upload_roles_array, $current_user_roles));

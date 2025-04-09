@@ -250,7 +250,7 @@ class ClassLoader
                 throw new \InvalidArgumentException("A non-empty PSR-4 prefix must end with a namespace separator.");
             }
             $this->prefixLengthsPsr4[$prefix[0]][$prefix] = $length;
-            $this->prefixDirsPsr4[$prefix] = $paths;
+            $this->prefixDirsPsr4[$prefix]                = $paths;
         } elseif ($prepend) {
             // Prepend directories for an already registered namespace.
             $this->prefixDirsPsr4[$prefix] = array_merge(
@@ -305,7 +305,7 @@ class ClassLoader
                 throw new \InvalidArgumentException("A non-empty PSR-4 prefix must end with a namespace separator.");
             }
             $this->prefixLengthsPsr4[$prefix[0]][$prefix] = $length;
-            $this->prefixDirsPsr4[$prefix] = (array) $paths;
+            $this->prefixDirsPsr4[$prefix]                = (array) $paths;
         }
     }
 
@@ -499,7 +499,7 @@ class ClassLoader
             $subPath = $class;
             while (false !== $lastPos = strrpos($subPath, '\\')) {
                 $subPath = substr($subPath, 0, $lastPos);
-                $search = $subPath . '\\';
+                $search  = $subPath . '\\';
                 if (isset($this->prefixDirsPsr4[$search])) {
                     $pathEnd = DIRECTORY_SEPARATOR . substr($logicalPathPsr4, $lastPos + 1);
                     foreach ($this->prefixDirsPsr4[$search] as $dir) {
