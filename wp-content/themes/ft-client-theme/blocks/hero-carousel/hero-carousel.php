@@ -22,6 +22,7 @@ $slides = get_field('slides'); // Repeater field
 <section id="<?php echo $anchor; ?>" class="<?php echo esc_attr($class_name); ?> w-full">
     <div class="relative flex flex-col items-center justify-center">
         <?php if (!empty($slides)) : ?>
+          <?php var_dump($slides); ?>
             <div class="carousel w-full">
                 <?php foreach ($slides as $slide) :
                     $image = $slide['image'];
