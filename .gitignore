@@ -7,8 +7,9 @@
 *.swp
 Thumbs.db
 /node_modules/
-data/
+/data/
 /vendor/
+.vscode/
 
 # wordpress specific
 wp-content/uploads/
