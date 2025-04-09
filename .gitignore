@@ -6,9 +6,9 @@
 *.bak
 *.swp
 Thumbs.db
-node_modules/
+/node_modules/
 data/
-vendor/
+/vendor/
 
 # wordpress specific
 wp-content/uploads/
@@ -22,14 +22,12 @@ wp-content/cache/supercache/*
 
 # theme and plugin files
 wp-content/index.php
-wp-content/themes/twenty*
-wp-content/themes/index.php
-wp-content/themes/**/css
-wp-content/themes/**/js
-wp-content/plugins
-wp-content/mu-plugins/*
-!wp-content/mu-plugins/acf-bridge-for-themes.php
-!wp-content/mu-plugins/mu-loader.php
+wp-content/themes/*
+!wp-content/themes/ft-base-theme
+!wp-content/themes/nwpx
+wp-content/themes/nwpx/css
+wp-content/themes/nwpx/js
+wp-content/plugins/*
 
 # large/disallowed file types
 # a CDN should be used for these
