@@ -20,7 +20,8 @@ Images positioned at the top of a page (above the fold) should always use fetchp
 Images below the fold should always use loading="lazy"
 
 When asked for a video, don't use the poster attribute
-When asked for an image and mobile image don't use srcset, sizes 
+When asked for an image and mobile image don't use srcset, sizes
+When asked for an image and mobile image, mobile image should be shown from mobile to desktop breakpoint, an image from desktop breakpoint and up
 
 For code examples look at the prompts directory
 
