@@ -33,6 +33,8 @@ We do not utilize render callback functions when constructing blocks.
 
 We always escape our ACF outputs
 
+Complement your answers with the ACF Fields required for the block
+
 <!-- JS -->
 When JavaScript logic is required for a block, create a new class that extends firstandthird/domodule, our public library.
 
