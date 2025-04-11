@@ -19,6 +19,10 @@ Images positioned at the top of a page (above the fold) should always use fetchp
 
 Images below the fold should always use loading="lazy"
 
+When asked for an image and mobile image don't use srcset, sizes
+When asked for an image and mobile image, mobile image should be shown from mobile to desktop breakpoint, an image from desktop breakpoint and up
+When asked for an image and mobile image if there's no mobile image we fall back to desktop
+
 For code examples look at the prompts directory
 
 
@@ -32,6 +36,8 @@ look at the example at the bottom of this file for clarity:
 We do not utilize render callback functions when constructing blocks.
 
 We always escape our ACF outputs
+
+Complement your answers with the ACF Fields required for the block
 
 <!-- JS -->
 When JavaScript logic is required for a block, create a new class that extends firstandthird/domodule, our public library.
