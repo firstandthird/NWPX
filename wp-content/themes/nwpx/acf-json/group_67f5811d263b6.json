@@ -170,8 +170,8 @@
                 },
                 {
                     "key": "field_67f581e5901ca",
-                    "label": "Carousel Short Title",
-                    "name": "carousel_short_title",
+                    "label": "Short Title",
+                    "name": "short_title",
                     "aria-label": "",
                     "type": "text",
                     "instructions": "",
@@ -218,5 +218,5 @@
     "acfe_form": 0,
     "acfe_meta": "",
     "acfe_note": "",
-    "modified": 1744142893
+    "modified": 1744320188
 }
