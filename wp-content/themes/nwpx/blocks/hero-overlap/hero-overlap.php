@@ -8,13 +8,13 @@
 // Support custom "anchor" values.
 $anchor = '';
 if (! empty($block['anchor'])) {
-  $anchor = esc_attr($block['anchor']);
+  $anchor = $block['anchor'];
 }
 
 // Create class attribute allowing for custom "className" and "align" values.
 $class_name = 'hero-overlap';
 if (! empty($block['className'])) {
-  $class_name .= ' ' . esc_attr($block['className']);
+  $class_name .= ' ' . $block['className'];
 }
 
 // Get fields.
@@ -26,7 +26,10 @@ $subtitle = get_field('hero_overlap_subtitle');
 $cta = get_field('hero_overlap_cta');
 ?>
 
-<section id="<?php echo esc_attr($anchor); ?>" class="<?php echo esc_attr($class_name); ?>">
+<section <?php
+          if (! empty($anchor)) :
+          ?>
+  id="<?php echo esc_attr($anchor); ?>" <?php endif; ?> class="<?php echo esc_attr($class_name); ?>">
   <div class="relative w-full">
     <div class="hero-item relative">
       <?php if (! empty($video)): ?>

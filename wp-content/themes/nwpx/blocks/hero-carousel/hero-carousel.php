@@ -8,13 +8,13 @@
 // Support custom "anchor" values.
 $anchor = '';
 if (! empty($block['anchor'])) {
-    $anchor = esc_attr($block['anchor']);
+    $anchor = $block['anchor'];
 }
 
 // Create class attribute allowing for custom "className" and "align" values.
 $class_name = 'hero-carousel';
 if (! empty($block['className'])) {
-    $class_name .= ' ' . esc_attr($block['className']);
+    $class_name .= ' ' . $block['className'];
 }
 
 // Get repeater fields.
@@ -24,7 +24,10 @@ if (empty($slides)) {
 }
 ?>
 
-<section id="<?php echo esc_attr($anchor); ?>" class="<?php echo esc_attr($class_name); ?> w-full">
+<section <?php
+            if (! empty($anchor)) :
+            ?>
+    id="<?php echo esc_attr($anchor); ?>" <?php endif; ?> class="<?php echo esc_attr($class_name); ?> w-full">
     <div class="relative flex flex-col items-center justify-center">
         <?php if (count($slides) > 1): ?>
             <div class="carousel w-full">
